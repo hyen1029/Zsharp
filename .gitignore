@@ -1,0 +1,37 @@
+# ---- 运行时依赖：体积巨大，不进仓库 ----
+/bin/
+/output/
+/settings.json
+
+# ---- 构建产物 ----
+/build/work/
+/dist/
+*.spec.bak
+*.exe
+*.msi
+*.zip
+/release/
+/release-*/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---- 日志与临时文件 ----
+*.log
+zsharp_qt/
