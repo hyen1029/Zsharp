@@ -1,0 +1,5 @@
+# Zsharp 运行所需（仅 GUI 依赖；推理引擎为外部 exe，不走 pip）
+PyQt5==5.15.11
+
+# 打包（开发期）
+pyinstaller>=6.0

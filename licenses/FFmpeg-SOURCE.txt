@@ -1,0 +1,71 @@
+Zsharp — FFmpeg 源码获取声明
+=============================
+
+本软件（Zsharp）发行版中包含 FFmpeg 的可执行文件：
+
+    发行位置：bin\ffmpeg\ffmpeg.exe
+
+该 FFmpeg 构建采用 GPL 授权，依据 GNU General Public License version 3
+（全文见同目录 GPL-3.0.txt）分发。按 GPL 第 3 节要求，特此提供对应源码的
+获取方式。
+
+------------------------------------------------------------------
+一、实际使用的构建
+------------------------------------------------------------------
+
+版本字符串：
+    ffmpeg version 9.0.2-essentials_build-www.gyan.dev
+    Copyright (c) 2000-2026 the FFmpeg developers
+    built with gcc 16.2.0 (Rev3, Built by MSYS2 project)
+
+完整 configure 参数：
+    --enable-gpl --enable-version3 --enable-static --disable-w32threads
+    --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv
+    --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma
+    --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq
+    --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264
+    --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg
+    --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype
+    --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf
+    --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2
+    --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl
+    --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme
+    --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame
+    --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm
+    --enable-libopencore-amrnb --enable-libopus --enable-libspeex
+    --enable-libvorbis --enable-librubberband
+
+说明：`--enable-gpl` 与 `--enable-version3` 使该构建整体适用 GPL v3。
+该构建还链接了 GPL 组件（x264、x265 等），其源码同样可在下列地址获取。
+
+------------------------------------------------------------------
+二、源码获取方式（任选其一，均为免费）
+------------------------------------------------------------------
+
+方式 1：构建提供方（gyan.dev）的源码仓库
+    https://github.com/GyanD/codexffmpeg
+    对应发行版本：9.0.2-essentials_build
+
+方式 2：FFmpeg 官方源码
+    https://ffmpeg.org/download.html
+    https://git.ffmpeg.org/ffmpeg.git
+
+方式 3：书面索取
+    如上述地址不可用，可通过本项目的 Issue 页面索取：
+    https://github.com/hyen1029/Zsharp/issues
+    我们会在收到请求后提供对应版本的完整源码压缩包或可用的下载链接。
+
+------------------------------------------------------------------
+三、许可全文
+------------------------------------------------------------------
+
+GNU General Public License version 3 全文见同目录下的：
+
+    GPL-3.0.txt
+
+------------------------------------------------------------------
+四、免责
+------------------------------------------------------------------
+
+FFmpeg 版权归 FFmpeg 项目及其贡献者所有。本声明仅为满足 GPL 再分发义务，
+不构成对 FFmpeg 的任何权利主张。
