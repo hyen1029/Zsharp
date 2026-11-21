@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 语法检查（主程序）
+        run: python -m py_compile app_qt.py
+
+      - name: 语法检查（打包配置）
+        run: python -m py_compile build/Zsharp.spec
+
+      - name: 校验资源文件齐全
+        shell: pwsh
+        run: |
+          $required = @("app_qt.py","LICENSE","README.md","icon.png","icon.ico",
+                        "ic_play.png","ic_pause.png","ic_replay.png",
+                        "build/Zsharp.spec","installer/setup.iss")
+          $missing = $required | Where-Object { -not (Test-Path $_) }
+          if ($missing) {
+            Write-Error "缺少文件: $($missing -join ', ')"
+            exit 1
+          }
+          Write-Host "资源文件齐全"
+
+      - name: 安装依赖并验证 PyQt5
+        run: |
+          pip install -r requirements.txt
+          python -c "import PyQt5.QtWidgets; print('PyQt5 OK')"
+
+      - name: 检查版本号一致性
+        shell: pwsh
+        run: |
+          $py = (Select-String -Path app_qt.py -Pattern 'APP_VERSION\s*=\s*"([^"]+)"').Matches[0].Groups[1].Value
+          $iss = (Select-String -Path installer/setup.iss -Pattern '#define\s+AppVer\s+"([^"]+)"').Matches[0].Groups[1].Value
+          Write-Host "app_qt.py = $py"
+          Write-Host "setup.iss = $iss"
+          if ($py -ne $iss) {
+            Write-Warning "版本号不一致：app_qt.py=$py  setup.iss=$iss"
+          }
